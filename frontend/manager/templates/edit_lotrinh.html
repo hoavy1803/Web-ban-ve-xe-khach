@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Lộ Trình</title>
+</head>
+<body>
+    <h3>Sửa thông tin lộ trình:</h3>
+    <form method="post" action="/edit_lotrinh">
+        <table>
+            <tr>
+                <th><label for="maLoTrinh">Mã lộ trình:</label></th>
+                <td><input id="ID" type="number" name="maLoTrinh" required></td>
+            </tr>
+            <tr>
+                <th><label for="benXuatPhat">Bến xuất phát:</label></th>
+                <td><input type="text" name="benXuatPhat" id="benXuatPhat"  required></td>
+            </tr>
+            <tr>
+                <th><label for="benKetThuc">Bến kết thúc:</label></th>
+                <td><input type="text" name="benKetThuc" id="benKetThuc"  required></td>
+            </tr>
+            <tr>
+                <th><label for="tinhXuatPhat">Tỉnh xuất phát:</label></th>
+                <td><input type="text" name="tinhXuatPhat" id="tinhXuatPhat"  required></td>
+            </tr>
+            <tr>
+                <th><label for="tinhKetThuc">Tỉnh kết thúc:</label></th>
+                <td><input type="text" name="tinhKetThuc" id="tinhKetThuc" required></td>
+            </tr>
+            <tr>
+                <th><label for="giaLoTrinh">Giá lộ trình:</label></th>
+                <td><input type="number" name="giaLoTrinh" id="giaLoTrinh"  required></td>
+            </tr>
+            <tr>
+                <th><label for="thoi_gian_di_chuyen">Thời gian di chuyển:</label></th>
+                <td><input type="text" name="thoi_gian_di_chuyen" id="thoi_gian_di_chuyen" required></td>
+            </tr>
+        </table>
+        
+        <div id="alert-btn">
+            <button id="close-btn">Hủy</button>
+            <button id="yes" type="submit">Lưu</button>
+        </div>
+
+        <script>
+            const id = localStorage.getItem('maLoTrinh')
+            document.getElementById('ID').value = id
+
+            const benXuatPhat = localStorage.getItem('benXuatPhat')
+            document.getElementById('benXuatPhat').value = benXuatPhat
+
+            const benKetThuc = localStorage.getItem('benKetThuc')
+            document.getElementById('benKetThuc').value = benKetThuc
+
+            const tinhXuatPhat = localStorage.getItem('tinhXuatPhat')
+            document.getElementById('tinhXuatPhat').value = tinhXuatPhat
+
+            const tinhKetThuc = localStorage.getItem('tinhKetThuc')
+            document.getElementById('tinhKetThuc').value = tinhKetThuc
+
+            const giaLoTrinh = localStorage.getItem('giaLoTrinh')
+            document.getElementById('giaLoTrinh').value = giaLoTrinh
+
+            const thoiGianDiChuyen = localStorage.getItem('thoiGianDiChuyen')
+            document.getElementById('thoi_gian_di_chuyen').value = thoiGianDiChuyen
+            
+        </script>
+    </form>
+</body>
+</html>

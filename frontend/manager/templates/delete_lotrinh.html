@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xóa Lộ Trình</title>
+</head>
+<body>
+    <h1>Xóa lộ trình:</h1>
+    <form action="/delete_lotrinh" method="post">
+        <label for="maLoTrinh">Mã lộ trình:</label>
+        <input id="ID" type="number" name="maLoTrinh" required>
+        <br>
+        <button type="submit">Xóa Lộ Trình</button>
+    </form>
+    <script>
+        const id = localStorage.getItem('maLoTrinh')
+        document.getElementById('ID').value = id
+    </script>
+</body>
+</html>

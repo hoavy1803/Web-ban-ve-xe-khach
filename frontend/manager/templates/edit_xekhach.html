@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Xe</title>
+</head>
+<body>
+    <h3>Sửa thông tin xe:</h3>
+    <form method="post" action="/edit_xekhach">
+        <table>
+            <tr>
+                <th><label for="maXeKhach">Mã vé:</label></th>
+                <td><input id="maXeKhach" type="text" name="maXeKhach" required></td>
+            </tr>
+            <tr>
+                <th><label for="loaiGhe">Loại ghế:</label></th>
+                <td><input type="text" name="loaiGhe" id="loaiGhe"  required></td>
+            </tr>
+            <tr>
+                <th><label for="soGhe">Số ghế:</label></th>
+                <td><input type="number" name="soGhe" id="soGhe"  required></td>
+            </tr>
+            <tr>
+                <th><label for="phuPhi">Phụ phí:</label></th>
+                <td><input type="number" name="phuPhi" id="phuPhi" required></td>
+            </tr>
+        </table>
+        
+        <div id="alert-btn">
+            <button id="close-btn">Hủy</button>
+            <button id="yes" type="submit">Lưu</button>
+        </div>
+
+        <script>
+            const maxe = localStorage.getItem('maXeKhach')
+            document.getElementById('maXeKhach').value = maxe
+
+            const loaighe = localStorage.getItem('loaighe')
+            document.getElementById('loaiGhe').value = loaighe
+
+            const soghe = localStorage.getItem('soghe')
+            document.getElementById('soGhe').value = soghe
+
+            const phuphi = localStorage.getItem('phuphi')
+            document.getElementById('phuPhi').value =  phuphi
+            
+        </script>
+    </form>
+</body>
+</html>

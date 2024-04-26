@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Chuyến Đi</title>
+</head>
+<body>
+    <h3>Sửa thông tin chuyến đi:</h3>
+    <form method="post" action="/edit_chuyendi">
+        <table>
+            <tr>
+                <th><label for="maChuyenDi">Mã chuyến đi:</label></th>
+                <td><input id="ID" type="number" name="maChuyenDi" required></td>
+            </tr>
+            <tr>
+                <th><label for="soGheDat">Số ghế đặt:</label></th>
+                <td><input type="number" name="soGheDat" id="soGheDat"  required></td>
+            </tr>
+            <tr>
+                <th><label for="gioDi">Giờ đi:</label></th>
+                <td><input type="text" name="gioDi" id="gioDi"  required></td>
+            </tr>
+            <tr>
+                <th><label for="gioDen">Giờ đến:</label></th>
+                <td><input type="text" name="gioDen" id="gioDen"  required></td>
+            </tr>
+            <tr>
+                <th><label for="giaChuyenDi">Giá chuyến đi:</label></th>
+                <td><input type="number" name="giaChuyenDi" id="giaChuyenDi" required></td>
+            </tr>
+            <tr>
+                <th><label for="taiXe">Tài xế:</label></th>
+                <td><input type="number" name="taiXe" id="taiXe"  required></td>
+            </tr>
+            <tr>
+                <th><label for="maXeKhach">Mã xe khách:</label></th>
+                <td><input type="text" name="maXeKhach" id="maXeKhach" required></td>
+            </tr>
+            <tr>
+                <th><label for="maLoTrinh">Mã lộ trình:</label></th>
+                <td><input type="number" name="maLoTrinh" id="maLoTrinh" required></td>
+            </tr>
+        </table>
+        
+        <div id="alert-btn">
+            <button id="close-btn">Hủy</button>
+            <button id="yes" type="submit">Lưu</button>
+        </div>
+
+        <script>
+            const id = localStorage.getItem('maChuyenDi')
+            document.getElementById('ID').value = id
+
+            const soGheDat = localStorage.getItem('soGheDat')
+            document.getElementById('soGheDat').value = soGheDat
+
+            const gioDi = localStorage.getItem('gioDi')
+            document.getElementById('gioDi').value = gioDi
+
+            const gioDen = localStorage.getItem('gioDen')
+            document.getElementById('gioDen').value = gioDen
+
+            const giaChuyenDi = localStorage.getItem('giaChuyenDi')
+            document.getElementById('giaChuyenDi').value = giaChuyenDi
+
+            const taiXe = localStorage.getItem('taiXe')
+            document.getElementById('taiXe').value = taiXe
+
+            const maXeKhach = localStorage.getItem('maXeKhach')
+            document.getElementById('maXeKhach').value = maXeKhach
+
+            const maLoTrinh = localStorage.getItem('maLoTrinh')
+            document.getElementById('maLoTrinh').value = maLoTrinh
+            
+        </script>
+    </form>
+</body>
+</html>

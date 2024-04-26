@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xóa Thanh Toán</title>
+</head>
+<body>
+    <h1>Xóa thanh toán:</h1>
+    <form action="/delete_thanhtoan" method="post">
+        <label for="maThanhToan">Mã thanh toán:</label>
+        <input id="ID" type="number" name="maThanhToan" required>
+        <br>
+        <button type="submit">Xóa Thanh Toán</button>
+    </form>
+    <script>
+        const id = localStorage.getItem('maThanhToan')
+        document.getElementById('ID').value = id
+    </script>
+</body>
+</html>

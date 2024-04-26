@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xóa Vé</title>
+</head>
+<body>
+    <h1>Xóa vé:</h1>
+    <form action="/delete_datve" method="post">
+        <label for="maVe">Mã vé:</label>
+        <input id="ID" type="number" name="maVe" required>
+        <br>
+        <button type="submit">Xóa Vé</button>
+    </form>
+    <script>
+        const id = localStorage.getItem('maVe')
+        document.getElementById('ID').value = id
+    </script>
+</body>
+</html>

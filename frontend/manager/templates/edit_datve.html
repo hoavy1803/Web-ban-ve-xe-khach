@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Vé</title>
+</head>
+<body>
+    <h3>Sửa thông tin vé:</h3>
+    <form method="post" action="/edit_datve">
+        <table>
+            <tr>
+                <th><label for="maVe">Mã vé:</label></th>
+                <td><input id="ID" type="number" name="maVe" required></td>
+            </tr>
+            <tr>
+                <th><label for="soLuong">Số lượng:</label></th>
+                <td><input type="number" name="soLuong" id="soLuong"  required></td>
+            </tr>
+            <tr>
+                <th><label for="maChuyenDi">Mã chuyến đi:</label></th>
+                <td><input type="number" name="maChuyenDi" id="maChuyenDi"  required></td>
+            </tr>
+            <tr>
+                <th><label for="maKhachHang">Mã khách hàng:</label></th>
+                <td><input type="number" name="maKhachHang" id="maKhachHang" required></td>
+            </tr>
+            <tr>
+                <th><label for="maThanhToan">Mã thanh toán:</label></th>
+                <td><input type="number" name="maThanhToan" id="maThanhToan" required></td>
+            </tr>
+        </table>
+        
+        <div id="alert-btn">
+            <button id="close-btn">Hủy</button>
+            <button id="yes" type="submit">Lưu</button>
+        </div>
+
+        <script>
+            const id = localStorage.getItem('maVe')
+            document.getElementById('ID').value = id
+
+            const soLuong = localStorage.getItem('soLuong')
+            document.getElementById('soLuong').value = soLuong
+
+            const maChuyenDi = localStorage.getItem('maChuyenDi')
+            document.getElementById('maChuyenDi').value = maChuyenDi
+
+            const maKhachHang = localStorage.getItem('maKhachHang')
+            document.getElementById('maKhachHang').value = maKhachHang
+
+            const maThanhToan = localStorage.getItem('maThanhToan')
+            document.getElementById('maThanhToan').value = maThanhToan
+            
+        </script>
+    </form>
+</body>
+</html>

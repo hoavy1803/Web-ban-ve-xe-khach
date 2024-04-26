@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Thanh Toán</title>
+</head>
+<body>
+    <h3>Sửa thông tin Thanh Toán:</h3>
+    <form method="post" action="/edit_thanhtoan">
+        <table>
+            <tr>
+                <th><label for="maThanhToan">Mã thanh toán:</label></th>
+                <td><input id="ID" type="number" name="maThanhToan" required></td>
+            </tr>
+            <tr>
+                <th><label for="trangThai">Trạng thái:</label></th>
+                <td><input type="number" name="trangThai" id="trangThai"  required></td>
+            </tr>
+            <tr>
+                <th><label for="tongTien">Tổng tiền:</label></th>
+                <td><input type="number" name="tongTien" id="tongTien"  required></td>
+            </tr>
+            
+        </table>
+        
+        <div id="alert-btn">
+            <button id="close-btn">Hủy</button>
+            <button id="yes" type="submit">Lưu</button>
+        </div>
+
+        <script>
+            const id = localStorage.getItem('maThanhToan')
+            document.getElementById('ID').value = id
+
+            const status = localStorage.getItem('trangThai')
+            document.getElementById('trangThai').value = status
+
+            const payID = localStorage.getItem('tongTien')
+            document.getElementById('tongTien').value = payID
+            
+        </script>
+    </form>
+</body>
+</html>

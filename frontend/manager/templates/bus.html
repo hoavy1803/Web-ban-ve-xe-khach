@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý xe khách</title>
+    <link rel="stylesheet" type="text/css" href="../css-m/bus.css">
+</head>
+
+<body>
+    <div id="header1">
+        <a href="" style="margin-top:12px;margin-left: 20px;">
+            <img width="auto" height="74" src="../img-m/logo.png" alt="">
+        </a>
+        <div id="menu">
+            <div class="item">
+                <a href="">Báo cáo</a>
+            </div>
+            <div class="item">
+                <a href="">Hệ thống</a>
+            </div>
+            <div class="item">
+                <img id='user-img' width="auto" height="45" src="../img-m/user.png" alt="">
+            </div>
+            <p class="item" style="color: #004AAD; margin-left:0px;">i</p>
+
+        </div>
+    </div>
+    <div style="height: 10px;"></div>
+    <div id="header2">
+        <div id="menu">
+            <div class="item">
+                <a href="ticket.html">Vé</a>
+            </div>
+            <div class="item">
+                <a href="trip.html">Chuyến đi</a>
+            </div>
+            <div class="item">
+                <a style="color: black;
+                        background-color: white;
+                        padding: 2px 3px 2px 3px;
+                        border-radius: 3px" href="bus.html">Xe</a>
+            </div>
+            <div class="item">
+                <a href="routes.html">Lộ trình</a>
+            </div>
+            <div class="item">
+                <a href="employee.html">Nhân viên</a>
+            </div>
+            <div class="item">
+                <a href="passenger.html">Khách hàng</a>
+            </div>
+            <div class="item">
+                <a href="payment.html">Thanh toán</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-head">
+                <a href="acc_info.html">Tài khoản</a>
+            </div>
+            <div class="modal-head">
+                <a href="http://127.0.0.1:8000">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="h">
+            <h2>Quản lý xe khách</h2>
+            <div>
+                <button id="add-btn">Tạo mới</button>
+                <button style="height: 40px;
+                width: 120px;
+                color: white;
+                background-color: #0097B2;
+                border: none;
+                border-radius: 8px;
+                font-weight: bold;
+                font-size: 16px;
+                margin-left: 30px;
+                cursor: pointer;" onclick="reload_page()">Reload</button>
+                <script>
+                    function reload_page() {
+                        location.reload();
+                    }
+                </script>
+            </div>
+        </div>
+        <div id="table-data" class="tableFixHead">
+            <table>
+                <thead>
+                    <th>Mã xe</th>
+                    <th>Loại ghế</th>
+                    <th>Số ghế</th>
+                    <th>Phụ phí</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                {% for row in data %}
+                <tr>
+                    {% for field in row %}
+                    <td>{{ field }}</td>
+                    {% endfor %}
+                    <td><button 
+                            onclick="edit('{{ row[0] }}', '{{ row[1] }}', '{{ row[2] }}', '{{ row[3] }}')">Sửa</button>
+                    </td>
+                    <!-- <td><button onclick="deleteItem('{{ row[0] }}')">Xóa</button></td> -->
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function edit(itemId, input1, input2, input3) {
+            localStorage.setItem('maXeKhach', itemId);
+            localStorage.setItem('loaighe', input1);
+            localStorage.setItem('soghe', input2);
+            localStorage.setItem('phuphi', input3);
+
+            // Kiểm tra giá trị trong localStorage sau khi cập nhật
+            console.log(localStorage.getItem('maXeKhach'));
+            console.log(localStorage.getItem('loaighe'));
+            console.log(localStorage.getItem('soghe'));
+            console.log(localStorage.getItem('phuphi'));
+            window.open("/edit_xekhach/" + itemId, "_blank", "width=300,height=280,left=1200");
+        }
+
+        // function deleteItem(userId) {
+        //     localStorage.setItem('maXeKhach', userId)
+        //     window.open("/delete_xekhach/" + userId, "_blank", "width=300,height=280,left=1200");
+        // }
+
+    </script>
+
+    <div id="edit-detail">
+        <div style="display: flex;
+    justify-content: space-between; margin-bottom: 20px">
+            <h2>Chỉnh sửa thông tin</h2>
+        </div>
+        <div>
+            <form id="edit-form" class="changed-info" method="post" action="/edit_xekhach">
+                <table>
+                    <tr>
+                        <th><label for="maXeKhach">Mã vé:</label></th>
+                        <td><input type="text" id="maXeKhach" name="maXeKhach" required></td>
+                    </tr>
+                    <tr>
+                        <th><label for="loaiGhe">Loại ghế:</label></th>
+                        <td><input type="text" name="loaiGhe" id="loaiGhe" required></td>
+                    </tr>
+                    <tr>
+                        <th><label for="soGhe">Số ghế:</label></th>
+                        <td><input type="number" name="soGhe" id="soGhe" required></td>
+                    </tr>
+                    <tr>
+                        <th><label for="phuPhi">Phụ phí:</label></th>
+                        <td><input type="number" name="phuPhi" id="phuPhi" required></td>
+                    </tr>
+                </table>
+
+                <div id="alert-btn">
+                    <button id="close-btn">Hủy</button>
+                    <button id="yes" type="submit">Lưu</button>
+                </div>
+
+                <script>
+                    const maxe = localStorage.getItem('maXeKhach')
+                    document.getElementById('maXeKhach').value = maxe
+
+                    const loaighe = localStorage.getItem('loaighe')
+                    document.getElementById('loaiGhe').value = loaighe
+
+                    const soghe = localStorage.getItem('soghe')
+                    document.getElementById('soGhe').value = soghe
+
+                    const phuphi = localStorage.getItem('phuphi')
+                    document.getElementById('phuPhi').value = phuphi
+
+                    const managerEdit = document.getElementById("edit-form");
+
+                    managerEdit.addEventListener("submit", function (event) {
+                        event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện submit
+
+                        // Gửi yêu cầu POST đến "/add" bằng AJAX
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", "/edit_xekhach");
+                        xhr.onload = function () {
+                            if (xhr.status === 200) {
+                                // Xử lý kết quả tại đây nếu cần thiết
+                                Swal.fire({
+                                    text: "Đã chỉnh sửa thành công",
+                                    icon: "success",
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                console.error("Lỗi trong quá trình thực hiện");
+                            }
+                        };
+                        xhr.send(new FormData(managerEdit));
+                    });
+
+                </script>
+            </form>
+        </div>
+    </div>
+
+    <!-- <div id="display" class="display">
+        <div class="display-content">
+            <h3>Xóa xe khách này?</h3>
+            <div id="display-btn">
+                <button id="yes">Xóa</button>
+                <button id="close-btn">Không</button>
+            </div>
+        </div>
+    </div> -->
+
+    <div id="add-detail">
+        <h2>Tạo mới xe khách</h2>
+        <br>
+        <div>
+            <form id="manager-form" class="changed-info" method="post" action="http://127.0.0.1:8000/add_xekhach">
+                <table border="1" cellspacing="0" cellpadding="10">
+                    <tr>
+                        <th>Mã xe</th>
+                        <th>Loại ghế</th>
+                        <th>Số ghế</th>
+                        <th>Phụ phí</th>
+                    </tr>
+
+                    <tr>
+                        <td><input type="text" name="maXeKhach"></td>
+                        <td><input type="text" name="loaiGhe"></td>
+                        <td><input type="number" name="soGhe"></td>
+                        <td><input type="number" name="phuPhi"></td>
+                    </tr>
+                </table>
+                <button type="submit" id="add-btn">Tạo mới</button>
+            </form>
+
+            <script>
+                const managerForm = document.getElementById("manager-form");
+
+                managerForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện submit
+
+                    // Gửi yêu cầu POST đến "/add" bằng AJAX
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/add_xekhach");
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            // Xử lý kết quả tại đây nếu cần thiết
+                            Swal.fire({
+                                text: "Đã thêm thành công",
+                                icon: "success",
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            console.error("Lỗi trong quá trình thực hiện");
+                        }
+                    };
+                    xhr.send(new FormData(managerForm));
+                });
+            </script>
+        </div>
+    </div>
+
+
+    <div id="footer">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js-m/bus.js"></script>
+
+</body>
+
+</html>

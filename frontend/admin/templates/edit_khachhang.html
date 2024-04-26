@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa Thông Tin Khách Hàng</title>
+</head>
+<body>
+    <h3>Sửa thông tin khách hàng:</h3>
+    <form method="post" action="/edit_kh">
+        <table>
+            <tr>
+                <th><label for="maKhachHang">Mã khách hàng:</label></th>
+                <td><input id="ID" type="number" name="maKhachHang" required></td>
+            </tr>
+            <tr>
+                <th><label for="tenKhachHang">Tên:</label></th>
+                <td><input type="text" name="tenKhachHang" id="tenKhachHang"  required></td>
+            </tr>
+            <tr>
+                <th><label for="email">Email:</label></th>
+                <td><input type="text" name="email" id="email"  required></td>
+            </tr>
+            <tr>
+                <th><label for="soDienThoai_KH">Số điện thoại:</label></th>
+                <td><input type="number" name="soDienThoai_KH" id="soDienThoai_KH" required></td>
+            </tr>
+            <tr>
+                <th><label for="soTaiKhoanNH">Số tài khoản:</label></th>
+                <td><input type="text" name="soTaiKhoanNH" id="soTaiKhoanNH" required></td>
+            </tr>
+            <tr>
+                <th><label for="matKhau">Mật khẩu:</label></th>
+                <td><input type="text" name="matKhau" id="matKhau" required></td>
+            </tr>
+        </table>
+        
+        <div id="alert-btn">
+            <button id="close-btn">Hủy</button>
+            <button id="yes" type="submit">Lưu</button>
+        </div>
+       
+        <script>
+            const id = localStorage.getItem('myid')
+            document.getElementById('ID').value = id
+
+            const name = localStorage.getItem('name')
+            document.getElementById('tenKhachHang').value = name
+
+            const email = localStorage.getItem('email')
+            document.getElementById('email').value = email
+
+            const phone = localStorage.getItem('phone')
+            document.getElementById('soDienThoai_KH').value = phone
+            
+        </script>
+    </form>
+</body>
+</html>
